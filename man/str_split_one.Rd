@@ -24,7 +24,13 @@ Match character, word, line and sentence boundaries with
 \code{\link[stringr:boundary]{boundary()}}. An empty pattern, "", is equivalent to
 \code{boundary("character")}.}
 
-\item{n}{}
+\item{n}{Maximum number of pieces to return. Default (Inf) uses all
+possible split positions.
+
+For \code{split_split()}, this determines the maximum length of each element
+of the output. For \code{str_split_fixed()}, this determines the number of
+columns in the output; if an input is too short, the result will be padded
+with \code{""}.}
 }
 \value{
 A character vector
@@ -33,10 +39,10 @@ A character vector
 Split a string
 }
 \examples{
-#' x <- "alfa,bravo,charlie,delta"
+x <- "alfa,bravo,charlie,delta"
 str_split_one(x, pattern = ",")
 str_split_one(x, pattern = ",", n = 2)
 
-#' y <- "192.168.0.1"
+y <- "192.168.0.1"
 str_split_one(y, pattern = stringr::fixed("."))
 }
